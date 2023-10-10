@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Εγγραφή Εκπαιδευόμενου</title>
+</head>
+<body>
+    <div th:object="${studentInsertDto}">
+
+      <form method="post">
+
+        <div>
+          <span>Εγγραφή Εκπαιδευόμενου</span>
+        </div>
+
+        <div>
+          <input id="email" type="text" placeholder="Email" name="email" th:field="*{email}" />
+        </div>
+
+        <div>
+          <input id="firstname" type="text" placeholder="Όνομα" name="firstname" th:field="*{firstname}" />
+        </div>
+
+        <div>
+          <input id="lastname" type="text" placeholder="Επώνυμο" name="lastname" th:field="*{lastname}" />
+        </div>
+
+        <input type="submit" value="Εισαγωγή">
+
+      </form>
+
+      <div th:if="${#fields.hasErrors('*')}">
+
+          <ul>
+              <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+          </ul>
+
+      </div>
+
+    </div>
+</body>
+</html>
